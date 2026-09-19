@@ -1,0 +1,22 @@
+[workspace]
+resolver = "3"
+
+members = [
+    "cliva",
+    "cliva-io",
+]
+
+[workspace.package]
+edition = "2024"
+license = "Apache-2.0"
+authors = [ "Nexment" ]
+repository = "https://github.com/theNexmentProject/cliva"
+homepage = "https://app.nexment.in/libraries/cliva"
+readme = "README.md"
+rust-version = "1.98"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+all = "warn"
