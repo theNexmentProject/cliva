@@ -16,3 +16,4 @@ description = "Standalone terminal input and output utilities for Rust CLI appli
 workspace = true
 
 [dependencies]
+crossterm = "0.29.0"
