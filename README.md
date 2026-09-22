@@ -175,7 +175,7 @@ Documentation will be available through docs.rs once the crates are published.
 
 [cliva](https://docs.rs/cliva) and [cliva-io](https://docs.rs/cliva-io)
 
-Visit [website](https://app.nexment.in/libraries/cliva) for more details.
+Visit [website](https://app.nexment.in/projects/cliva) for more details.
 
 
 ## Contributing

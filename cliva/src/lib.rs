@@ -1,3 +1,3 @@
 pub fn main() -> String {
-  "Under active devlopment".to_string()
+	"Under active devlopment".to_string()
 }
