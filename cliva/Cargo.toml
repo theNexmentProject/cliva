@@ -1,0 +1,16 @@
+[package]
+name = "cliva"
+version = "0.1.0"
+
+edition = { workspace = true }
+license = { workspace = true }
+repository = { workspace = true }
+homepage = { workspace = true }
+readme = { workspace = true }
+keywords = { workspace = true }
+categories = { workspace = true }
+
+description = "A modern, expressive, and modular Rust toolkit for building command-line applications."
+
+[dependencies]
+cliva-io = { workspace = true }
