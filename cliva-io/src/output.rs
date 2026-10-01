@@ -1,7 +1,9 @@
+mod loader;
 mod print;
 mod semantic;
 mod title;
 
+pub use loader::{Loader, loader};
 pub use print::{get_text, print};
 pub use semantic::{Semantics, semantic};
 pub use title::{Align, Title, title};
