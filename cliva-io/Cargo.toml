@@ -13,3 +13,4 @@ categories = { workspace = true }
 description = "Low-level terminal input and output primitives for the Cliva CLI ecosystem."
 
 [dependencies]
+serde_json = "1"

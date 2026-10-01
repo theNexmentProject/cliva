@@ -1,4 +1,4 @@
-use cliva_io::output::{Align, Semantics, Style, Title, get_text, print, semantic, title};
+use cliva_io::output::{Align, Semantics, Style, Title, get_text, print, semantic, title, icon};
 
 fn main() {
     // Print normal text.
@@ -41,4 +41,11 @@ fn main() {
 
     // Print a warning message.
     semantic("Check your configuration", Semantics::Warning);
+
+    //icons usage
+    println!("{} Operation completed", icon("check"));
+    println!("{} Operation failed", icon("cross"));
+    println!("{} Information message", icon("info"));
+    println!("{} Warning message", icon("warning"));
+    println!("{} Favorite item", icon("heart"));
 }
