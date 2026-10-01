@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong>Cliva v0.1.0</strong> · <strong>Cliva I/O v0.2.0</strong>
+  <strong>Cliva v0.1.0</strong> · <strong>Cliva I/O v0.1.3</strong>
 </p>
 
 ---
@@ -40,7 +40,7 @@ It provides the terminal input and output functionality used by Cliva, keeping I
 
 This separation allows the I/O layer to remain focused and reusable while Cliva provides the developer-facing API.
 
-**Version:** `0.2.0`
+**Version:** `0.1.3`
 
 ## Project Structure
 

@@ -15,4 +15,4 @@ keywords = ["cli", "command-line", "terminal", "rust"]
 categories = ["command-line-interface", "command-line-utilities"]
 
 [workspace.dependencies]
-cliva-io = { path = "cliva-io", version = "0.1.0" }
+cliva-io = { path = "cliva-io", version = "0.1.3" }
