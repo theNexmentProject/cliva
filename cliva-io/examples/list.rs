@@ -1,4 +1,4 @@
-use cliva_io::output::{list, nested_list, List};
+use cliva_io::output::{List, list, nested_list};
 
 fn main() {
     // Print an ordered list.
@@ -10,18 +10,12 @@ fn main() {
     println!();
 
     // Print an unordered list.
-    list(
-        List::Unordered,
-        vec!["Apple", "Banana", "Orange"],
-    );
+    list(List::Unordered, vec!["Apple", "Banana", "Orange"]);
 
     println!();
 
     // Print a list with a custom character.
-    list(
-        List::Custom('*'),
-        vec!["Rust", "Python", "JavaScript"],
-    );
+    list(List::Custom('*'), vec!["Rust", "Python", "JavaScript"]);
 
     println!();
 
@@ -31,17 +25,11 @@ fn main() {
         vec![
             (
                 "Programming languages",
-                Some((
-                    List::Ordered,
-                    vec!["Rust", "Python", "JavaScript"],
-                )),
+                Some((List::Ordered, vec!["Rust", "Python", "JavaScript"])),
             ),
             (
                 "Operating systems",
-                Some((
-                    List::Custom('*'),
-                    vec!["Linux", "Windows", "macOS"],
-                )),
+                Some((List::Custom('*'), vec!["Linux", "Windows", "macOS"])),
             ),
             ("Other tools", None),
         ],
