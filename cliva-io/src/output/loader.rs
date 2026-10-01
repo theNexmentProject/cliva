@@ -1,9 +1,10 @@
 use std::{
     io::{self, Write},
-    thread::{self, JoinHandle},
+    thread,
     time::Duration,
 };
 
+#[derive(Debug, Clone, Copy)]
 pub enum Loader {
     Dots,
     Bar,
@@ -15,45 +16,27 @@ where
     T: Send + 'static,
 {
     let handle = thread::spawn(task);
+    let frames: &[&str] = match style {
+        Loader::Dots => &["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"],
+        Loader::Bar => &["|", "/", "-", "\\"],
+    };
 
-    match style {
-        Loader::Dots => loader_dots(text, &handle),
-        Loader::Bar => loader_bar(text, &handle),
+    let mut stdout = io::stdout();
+    let mut i = 0;
+
+    while !handle.is_finished() {
+        let _ = write!(stdout, "\r{} {}  ", frames[i % frames.len()], text);
+        let _ = stdout.flush();
+
+        thread::sleep(Duration::from_millis(80));
+        i += 1;
     }
 
-    clear_line();
+    let _ = write!(stdout, "\r\x1b[2K");
+    let _ = stdout.flush();
 
     match handle.join() {
         Ok(result) => result,
         Err(error) => std::panic::resume_unwind(error),
     }
-}
-
-fn animate(text: &str, frames: &[&str], handle: &JoinHandle<impl Send>) {
-    let mut i = 0;
-
-    while !handle.is_finished() {
-        print!("\r{} {}", frames[i % frames.len()], text);
-        let _ = io::stdout().flush();
-
-        thread::sleep(Duration::from_millis(80));
-        i += 1;
-    }
-}
-
-fn loader_dots(text: &str, handle: &JoinHandle<impl Send>) {
-    animate(
-        text,
-        &["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"],
-        handle,
-    );
-}
-
-fn loader_bar(text: &str, handle: &JoinHandle<impl Send>) {
-    animate(text, &["|", "/", "-", "\\"], handle);
-}
-
-fn clear_line() {
-    print!("\r\x1b[2K");
-    let _ = io::stdout().flush();
 }

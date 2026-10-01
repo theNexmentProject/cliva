@@ -1,11 +1,11 @@
 mod loader;
 mod print;
-mod semantic;
+mod progress;
 mod title;
 
 pub use loader::{Loader, loader};
-pub use print::{get_text, print};
-pub use semantic::{Semantics, semantic};
+pub use print::{Semantics, get_text, print, semantic};
+pub use progress::{Progress, progress};
 pub use title::{Align, Title, title};
 
 #[derive(Debug, Clone)]
