@@ -1,4 +1,4 @@
-use cliva_io::output::{Semantics, Style, get_text, print, semantic};
+use cliva_io::output::{Align, Semantics, Style, Title, get_text, print, semantic, title};
 
 fn main() {
     //print coloured text
@@ -36,4 +36,21 @@ fn main() {
     semantic("This is a success message", Semantics::Success);
     semantic("You are not using the latest version", Semantics::Warning);
     semantic("Please update to latest version", Semantics::Info);
+
+    println!();
+    println!();
+
+    //titles
+    title(
+        " Simple Title ",
+        Title::Simple('-'),
+        40,
+        Some(Align::Center),
+    );
+    println!();
+    title("Bottom Bar Title", Title::BottomBar('='), 50, None);
+    println!();
+    title("Bar Title", Title::Bar('='), 40, None);
+    println!();
+    println!();
 }

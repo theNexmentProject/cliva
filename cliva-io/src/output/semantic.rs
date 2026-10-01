@@ -16,8 +16,8 @@ pub fn semantic(text: &str, look: Semantics) {
         ),
         Semantics::Error => println!(
             "{} {}",
-            get_text("✖ ERROR", Style::Multiple(vec!["bg_red", "bold", "white"])),
-            text
+            get_text("✖ ERROR", Style::Multiple(vec!["bold", "red"])),
+            get_text(text, Style::Error)
         ),
         Semantics::Info => println!(
             "{} {}",
