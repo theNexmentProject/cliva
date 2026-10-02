@@ -32,11 +32,7 @@ pub fn semantic(text: &str, kind: Semantics) {
             Style::Multiple(vec!["bold", "red"]),
             Style::Error,
         ),
-        Semantics::Info => (
-            "!INFO",
-            Style::Multiple(vec!["bold", "blue"]),
-            Style::Info,
-        ),
+        Semantics::Info => ("!INFO", Style::Multiple(vec!["bold", "blue"]), Style::Info),
         Semantics::Warning => (
             "⚠ WARN",
             Style::Multiple(vec!["yellow", "bold"]),
@@ -52,8 +48,7 @@ pub fn semantic(text: &str, kind: Semantics) {
 }
 
 static ICONS: LazyLock<HashMap<String, String>> = LazyLock::new(|| {
-    serde_json::from_str(include_str!("../data/icons.json"))
-        .expect("Invalid Cliva icon registry")
+    serde_json::from_str(include_str!("../data/icons.json")).expect("Invalid Cliva icon registry")
 });
 
 pub fn icon(slug: &str) -> String {

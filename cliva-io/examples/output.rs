@@ -1,4 +1,4 @@
-use cliva_io::output::{Align, Semantics, Style, Title, get_text, print, semantic, title, icon};
+use cliva_io::output::{Align, Semantics, Style, Title, get_text, icon, print, semantic, title};
 
 fn main() {
     // Print normal text.
