@@ -1,4 +1,4 @@
-use cliva_io::input::{confirm, password, prompt, InputType, InputValue};
+use cliva_io::input::{InputType, InputValue, confirm, password, prompt};
 
 fn main() -> std::io::Result<()> {
     // Ask for a name with a default text value.

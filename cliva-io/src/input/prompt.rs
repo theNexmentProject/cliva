@@ -264,11 +264,7 @@ pub fn password(text: &str, default: Option<&str>) -> io::Result<String> {
     let mut input = String::new();
 
     loop {
-        write!(
-            stdout,
-            "\r\x1b[2K\x1b[36m❯\x1b[0m {} ",
-            text
-        )?;
+        write!(stdout, "\r\x1b[2K\x1b[36m❯\x1b[0m {} ", text)?;
 
         write!(stdout, "{}", "*".repeat(input.chars().count()))?;
         stdout.flush()?;

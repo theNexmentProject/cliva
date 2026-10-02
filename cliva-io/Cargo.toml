@@ -1,6 +1,6 @@
 [package]
 name = "cliva-io"
-version = "0.1.4"
+version = "0.1.5"
 
 edition = { workspace = true }
 license = { workspace = true }
@@ -15,3 +15,4 @@ description = "Low-level terminal input and output primitives for the Cliva CLI 
 [dependencies]
 serde_json = "1"
 libc = "0.2"
+crossterm = "0.29"
