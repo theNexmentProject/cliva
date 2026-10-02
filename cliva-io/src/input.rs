@@ -1,3 +1,3 @@
 mod prompt;
 
-pub use prompt::{InputType, InputValue, confirm, prompt};
+pub use prompt::{InputType, InputValue, confirm, prompt, password};

@@ -191,21 +191,18 @@ pub fn confirm(text: &str, default: Option<bool>) -> io::Result<bool> {
 
     loop {
         let hint = match default {
-            Some(true) => "\x1b[2mY/n\x1b[0m",
-            Some(false) => "\x1b[2my/N\x1b[0m",
-            None => "\x1b[2my/n\x1b[0m",
+            Some(true) => "[Y/n]",
+            Some(false) => "[y/N]",
+            None => "[y/n]",
         };
 
-        write!(stdout, "\r\x1b[2K\x1b[36m❯\x1b[0m {} {} ", text, hint)?;
+        write!(
+            stdout,
+            "\r\x1b[2K\x1b[36m❯\x1b[0m {} \x1b[1;35m{}\x1b[0m : ",
+            text, hint
+        )?;
 
-        if input.is_empty() {
-            if let Some(value) = default {
-                write!(stdout, "\x1b[2m{}\x1b[0m", if value { "yes" } else { "no" })?;
-            }
-        } else {
-            write!(stdout, "{}", input)?;
-        }
-
+        write!(stdout, "{}", input)?;
         stdout.flush()?;
 
         let mut byte = [0u8; 1];
@@ -244,6 +241,69 @@ pub fn confirm(text: &str, default: Option<bool>) -> io::Result<bool> {
                 }
 
                 input.clear();
+            }
+
+            127 | 8 => {
+                input.pop();
+            }
+
+            byte if byte.is_ascii_graphic() || byte == b' ' => {
+                input.push(byte as char);
+            }
+
+            _ => {}
+        }
+    }
+}
+
+pub fn password(text: &str, default: Option<&str>) -> io::Result<String> {
+    let _raw = RawMode::new()?;
+    let mut stdout = io::stdout();
+    let stdin = io::stdin();
+    let mut reader = stdin.lock();
+    let mut input = String::new();
+
+    loop {
+        write!(
+            stdout,
+            "\r\x1b[2K\x1b[36m❯\x1b[0m {} ",
+            text
+        )?;
+
+        write!(stdout, "{}", "*".repeat(input.chars().count()))?;
+        stdout.flush()?;
+
+        let mut byte = [0u8; 1];
+
+        if reader.read_exact(&mut byte).is_err() {
+            writeln!(stdout)?;
+            return Err(io::Error::new(
+                io::ErrorKind::Interrupted,
+                "Operation cancelled by user",
+            ));
+        }
+
+        match byte[0] {
+            3 | 4 => {
+                writeln!(stdout)?;
+                return Err(io::Error::new(
+                    io::ErrorKind::Interrupted,
+                    "Operation cancelled by user",
+                ));
+            }
+
+            13 | 10 => {
+                writeln!(stdout)?;
+
+                if !input.is_empty() {
+                    return Ok(input);
+                }
+
+                if let Some(value) = default {
+                    return Ok(value.to_string());
+                }
+
+                print("Please provide a password.", Style::Error);
             }
 
             127 | 8 => {
