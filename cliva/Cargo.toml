@@ -13,4 +13,6 @@ categories = { workspace = true }
 description = "A modern, expressive, and modular Rust toolkit for building command-line applications."
 
 [dependencies]
-cliva-io = { workspace = true }
+cliva-io = { path = "../cliva-io", version = "0.1.5" }
+cliva-macros = { path = "../cliva-macros/", version = "0.1.0" }
+cliva-tree = { path = "../cliva-tree", version = "0.1.0" }

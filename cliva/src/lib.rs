@@ -1,14 +1,5 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
-}
+#![allow(unused)]
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
-}
+use cliva_io::*;
+use cliva_macros::*;
+use cliva_tree::*;
