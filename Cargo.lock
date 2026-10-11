@@ -19,7 +19,7 @@ name = "cliva"
 version = "0.1.0"
 dependencies = [
  "cliva-io",
- "cliva-macros",
+ "cliva-runtime",
  "cliva-tree",
 ]
 
@@ -33,11 +33,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "cliva-macros"
+name = "cliva-runtime"
 version = "0.1.0"
 dependencies = [
- "quote",
- "syn 2.0.119",
+ "cliva-tree",
 ]
 
 [[package]]

@@ -1,6 +1,7 @@
 [package]
 name = "cliva-tree"
 version = "0.1.0"
+description = "Command tree that cliva runtime uses and macros build on compile time"
 edition.workspace = true
 license.workspace = true
 repository.workspace = true

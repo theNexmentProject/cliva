@@ -1,0 +1,14 @@
+[package]
+name = "cliva-runtime"
+version = "0.1.0"
+description = "Cliva runtime library used by core library"
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme.workspace = true
+keywords.workspace = true
+categories.workspace = true
+
+[dependencies]
+cliva-tree = { path = "../cliva-tree", version = "0.1.0" }

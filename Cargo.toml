@@ -3,7 +3,7 @@ resolver = "3"
 members = [
     "cliva",
     "cliva-io",
-    "cliva-macros", "cliva-runtime",
+    "cliva-runtime",
     "cliva-tree",
 ]
 
